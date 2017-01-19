@@ -31,7 +31,14 @@ extension </xsl:text><xsl:value-of select="$tableName"/><xsl:text>: JSONModelTyp
     case </xsl:text>
 				<xsl:for-each select="fmp:METADATA/fmp:FIELD">
           <xsl:value-of select="@NAME"/>
-          <xsl:text>, </xsl:text>
+			<xsl:choose>
+				<xsl:when test="position()=last()">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>, </xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>		
 				</xsl:for-each>
 <xsl:text>
   }
@@ -56,7 +63,14 @@ extension </xsl:text><xsl:value-of select="$tableName"/><xsl:text>: JSONModelTyp
           <xsl:value-of select="@NAME"/>
           <xsl:text>: </xsl:text>
           <xsl:value-of select="@NAME"/>
-          <xsl:text>, </xsl:text>
+			<xsl:choose>
+				<xsl:when test="position()=last()">
+					<xsl:text/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>, </xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>		
 				</xsl:for-each>
 <xsl:text> ]
   }
